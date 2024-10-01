@@ -35,7 +35,7 @@ function LoginPopup() {
                             Username or email
                         </label>
                         <FormItem name="username" rules={[{ required: true, message: "Please input your username or email" }]}>
-                            <input type="text" id="username" placeholder="example@gmail.com" className="w-full outline-none p-3 border border-black" />
+                            <input type="text" id="username" className="w-full outline-none p-3 border border-black" />
                         </FormItem>
                     </div>
                     <div>
@@ -43,7 +43,7 @@ function LoginPopup() {
                             Password
                         </label>
                         <FormItem name="password" rules={[{ required: true, message: "Please input your password" }]}>
-                            <input type="text" id="password" placeholder="example@gmail.com" className="w-full outline-none p-3 border border-black" />
+                            <input type="text" id="password" className="w-full outline-none p-3 border border-black" />
                         </FormItem>
                     </div>
                     <button disabled={loading} type="submit" className="w-full flex items-center gap-2 justify-center bg-black text-white p-3 hover-effect uppercase">
