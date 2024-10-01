@@ -2,26 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-link {
+        @apply p-2 relative text-black before:absolute before:h-[1px] before:bg-black before:w-0 before:left-1/2 before:bottom-0 before:hover:w-full before:hover:left-0 before:duration-300;
+    }
+    .hover-effect{
+        @apply hover:text-white hover:bg-blue-600
+    }
+}
+
+.men-women-section-single-item {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: 1s;
+}
+.men-women-section-single-item:hover {
+    transform: scale(1.05);
+
 }
