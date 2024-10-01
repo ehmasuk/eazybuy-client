@@ -3,6 +3,7 @@
 import { closeSideCart } from "@/redux/CartSlice";
 import { Drawer } from "antd";
 import Image from "next/image";
+import Link from "next/link";
 import { LuTrash2 } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 
