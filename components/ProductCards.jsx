@@ -13,7 +13,7 @@ function ProductCards({ data }) {
                     <div key={index} className="group mb-10">
                         <div className="relative p-4 min-h-96 w-full overflow-hidden">
                             <Link href={`/product/test`}>
-                                <Image src="/51.jpg" alt="image" width={200} height={200} className="absolute left-0 top-0 w-full h-full object-cover" />
+                                <Image src="/51.jpg" alt="image" fill sizes="(min-width: 1340px) 243px, calc(19.8vw - 18px)" className="absolute left-0 top-0 w-full h-full object-cover" />
                             </Link>
                             {/* cart options */}
                             <div className="absolute -bottom-[60px] opacity-0 duration-300 group-hover:bottom-4 group-hover:opacity-100 left-1/2 -translate-x-1/2 min-w-[90%]">

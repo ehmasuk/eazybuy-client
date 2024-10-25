@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -17,7 +18,14 @@ function HeroSlider() {
     return (
         <Slider {...heroSliderSettings}>
             <div>
-                <div className="flex flex-col justify-center p-10 bg-cover bg-left-top bg-no-repeat min-h-[60vh]" style={{ backgroundImage: "url('/shop2_home_slider1.jpg')" }}>
+                <div className="flex flex-col justify-center p-10 min-h-[60vh] relative">
+                    <Image
+                        src="/shop2_home_slider1.jpg"
+                        alt="image"
+                        fill
+                        sizes="(min-width: 2760px) 952px, (min-width: 760px) 538px, (min-width: 600px) 388px, (min-width: 420px) 65.63vw, calc(12vw + 220px)"
+                        className="absolute left-0 top-0 w-full h-full object-cover z-[-1]"
+                    />
                     <p className="uppercase text-gray-800">Summer sale</p>
                     <p className="uppercase text-black font-extrabold text-6xl mt-2 mb-8">30% off</p>
                     <div className="flex gap-8">
@@ -30,7 +38,14 @@ function HeroSlider() {
                 </div>
             </div>
             <div>
-                <div className="flex flex-col justify-center p-10 bg-cover bg-left-top bg-no-repeat min-h-[60vh]" style={{ background: "url('/shop2_home_slider2.jpg')" }}>
+                <div className="flex flex-col justify-center p-10 min-h-[60vh] relative">
+                    <Image
+                        src="/shop2_home_slider2.jpg"
+                        alt="image"
+                        fill
+                        sizes="(min-width: 2760px) 952px, (min-width: 760px) 538px, (min-width: 600px) 388px, (min-width: 420px) 65.63vw, calc(12vw + 220px)"
+                        className="absolute left-0 top-0 w-full h-full object-cover z-[-1]"
+                    />
                     <p className="uppercase text-gray-800">over 200 products in discount</p>
                     <p className="uppercase text-black font-extrabold text-6xl mt-2 mb-8">great deals</p>
                     <div className="flex gap-8">
@@ -43,7 +58,14 @@ function HeroSlider() {
                 </div>
             </div>
             <div>
-                <div className="flex flex-col justify-center p-10 bg-cover bg-left-top bg-no-repeat min-h-[60vh]" style={{ background: "url('/shop2_home_slider3.jpg')" }}>
+                <div className="flex flex-col justify-center p-10 min-h-[60vh] relative">
+                    <Image
+                        src="/shop2_home_slider3.jpg"
+                        alt="image"
+                        fill
+                        sizes="(min-width: 2760px) 952px, (min-width: 760px) 538px, (min-width: 600px) 388px, (min-width: 420px) 65.63vw, calc(12vw + 220px)"
+                        className="absolute left-0 top-0 w-full h-full object-cover z-[-1]"
+                    />
                     <p className="uppercase text-gray-800">over 200 products in discount</p>
                     <p className="uppercase text-black font-extrabold text-6xl mt-2 mb-8">great deals</p>
                     <div className="flex gap-8">

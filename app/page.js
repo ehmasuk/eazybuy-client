@@ -9,13 +9,13 @@ import { PiDress } from "react-icons/pi";
 function HomePage() {
     return (
         <>
-            <div className="max-w-screen-xl mx-auto px-4 py-5">
+            <div className="container py-5">
                 {/* hero section */}
 
                 <div className="grid grid-cols-12 gap-8">
                     {/* sidebar */}
                     <div className="col-span-3 border border-gray-200 h-fit">
-                        <div className="flex gap-2 items-center p-4 bg-blue-600 text-white font-bold text-sm">
+                        <div className="row gap-2 p-4 bg-blue-600 text-white font-bold text-sm">
                             <FaBars fontSize={16} />
                             SHOP BY CATEGORY
                         </div>
@@ -76,7 +76,7 @@ function HomePage() {
                 <div className="mb-10">
                     <p className="text-3xl mb-4 font-semibold">New arivals</p>
                     <div className="grid grid-cols-5 gap-4">
-                        <ProductCards data={[1, 2, 3, 4, 5]} />
+                        <ProductCards data={[1]} />
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@ function HomePage() {
                 <div className="mb-10">
                     <p className="text-3xl mb-4 font-semibold">Recommended for you</p>
                     <div className="grid grid-cols-5 gap-4">
-                        <ProductCards data={[1, 2, 3]} />
+                        <ProductCards data={[1]} />
                     </div>
                 </div>
             </div>

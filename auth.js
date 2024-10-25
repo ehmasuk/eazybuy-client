@@ -1,18 +1,32 @@
+import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import prisma from "./prisma/prisma";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     providers: [
         Credentials({
             name: "credentials",
             authorize: async (credentials) => {
-                const user = { username: "admin", password: "admin" };
-                if (credentials.username === user.username && credentials.password === user.password) {
-                    return user;
-                }else{
+                try {
+                    const user = await prisma.users.findUnique({ where: { email: credentials.email } });
+                    console.log(user);
+
+                    if (!user) {
+                        return null;
+                    }
+
+                    const isValidPass = bcrypt.compare(credentials.password, user.password);
+
+                    if (!isValidPass) {
+                        return null;
+                    }
+
+                    return { id: user._id, name: user.name, email: user.email, isAdmin: user.isAdmin, isBanned: user.isBanned, isVerified: user.isVerified };
+                } catch (error) {
+                    console.log(error);
                     return null;
                 }
-                
             },
         }),
     ],

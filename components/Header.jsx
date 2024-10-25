@@ -57,11 +57,11 @@ function Header() {
                                         <Link href="/profile">
                                             <AiOutlineUser className="hover:text-blue-600 " fontSize={25} />
                                         </Link>
-                                        <ProfileDropdown />
+                                        <ProfileDropdown session={session} />
                                     </>
                                 ) : (
                                     <>
-                                        <Link href="/login">
+                                        <Link href="/account">
                                             <AiOutlineUser className="hover:text-blue-600 " fontSize={25} />
                                         </Link>
                                         <LoginPopup />

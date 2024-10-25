@@ -10,7 +10,12 @@
         @apply hover:text-white hover:bg-blue-600
     }
 }
-
+.container{
+    @apply max-w-7xl mx-auto lg:px-0 px-4
+}
+.row{
+    @apply lg:flex items-center
+}
 .men-women-section-single-item {
     background-position: center;
     background-size: cover;
