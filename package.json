@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev",
+        "dev": "prisma generate && next dev",
         "build": "prisma generate && next build",
         "start": "next start",
         "lint": "next lint"
@@ -14,8 +14,8 @@
         "@reduxjs/toolkit": "^2.2.7",
         "antd": "^5.21.1",
         "axios": "^1.7.7",
-        "bcrypt": "^5.1.1",
         "bcryptjs": "^2.4.3",
+        "cloudinary": "^2.5.1",
         "cookies-next": "^4.2.1",
         "next": "14.2.13",
         "next-auth": "^5.0.0-beta.22",

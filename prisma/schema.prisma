@@ -24,8 +24,6 @@ model products {
     title       String     @unique
     newPrice    Float
     oldPrice    Float?
-    colors      Json?
-    sizes       Json?
     slug        String     @unique
     categoryId  String     @db.ObjectId
     category    categories @relation(fields: [categoryId], references: [id])
@@ -35,26 +33,48 @@ model products {
     image       String
     createdAt   DateTime   @default(now())
     updatedAt   DateTime   @updatedAt
+    colors      colors[]
+    sizes       sizes[]
 }
 
 model categories {
     id            String          @id @default(auto()) @map("_id") @db.ObjectId
-    name          String
+    name          String          @unique
     slug          String          @unique
     image         String
     products      products[]
     subCategories subCategories[]
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    createdAt     DateTime        @default(now())
+    updatedAt     DateTime        @updatedAt
 }
 
 model subCategories {
     id               String     @id @default(auto()) @map("_id") @db.ObjectId
     parentCategoryId String     @db.ObjectId
-    parentCategory   categories @relation(fields: [parentCategoryId], references: [id])
-    name             String
+    parentCategory   categories @relation(fields: [parentCategoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    name             String     @unique
     slug             String     @unique
+    image            String
     createdAt        DateTime   @default(now())
     updatedAt        DateTime   @updatedAt
+}
+
+model colors {
+    id        String    @id @default(auto()) @map("_id") @db.ObjectId
+    name      String
+    code      String    @unique
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    productId String?   @db.ObjectId
+    products  products? @relation(fields: [productId], references: [id])
+}
+
+model sizes {
+    id        String    @id @default(auto()) @map("_id") @db.ObjectId
+    name      String    @unique
+    slug      String    @unique
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    productId String?   @db.ObjectId
+    products  products? @relation(fields: [productId], references: [id])
 }

@@ -39,7 +39,7 @@ function Products() {
                                                 <div className="inline-flex items-center gap-x-3">
                                                     <input type="checkbox" className="text-blue-500 border-gray-300 rounded" />
                                                     <div className="flex items-center gap-x-2">
-                                                        <img className="object-contain w-10 h-10" src="" alt="image" />
+                                                        {/* <img className="object-contain w-10 h-10" src="" alt="image" /> */}
                                                         <div>
                                                             <h2 className="font-medium text-gray-800 ">name</h2>
                                                         </div>

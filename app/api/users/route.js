@@ -7,8 +7,6 @@ export const GET = async () => {
         return NextResponse.json(users, { status: 200 });
     } catch (error) {
         console.log(error);
-        return NextResponse.json({message:error.message}, { status: 400 });
+        return NextResponse.json({ message: error.message }, { status: 400 });
     }
-    
-    
 };

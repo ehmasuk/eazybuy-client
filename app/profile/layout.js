@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { CgProfile } from "react-icons/cg";
 import { CiHeart } from "react-icons/ci";
 import { FiShoppingCart } from "react-icons/fi";
@@ -9,7 +8,7 @@ import { IoIosLogOut } from "react-icons/io";
 import { PiDress } from "react-icons/pi";
 
 function layout({ children }) {
-    const pathname = usePathname();
+
 
     return (
         <div>
@@ -27,7 +26,7 @@ function layout({ children }) {
                                         <input id="pro-img" name="profile-image" type="file" className="hidden" onchange="loadFile(event)" />
                                         <div>
                                             <div className="relative h-28 w-28 mx-auto">
-                                                <img src="https://html.hixstudio.net/ebazer/assets/img/users/user-10.jpg" className="rounded-full shadow ring-4 ring-slate-50" id="profile-image" alt />
+                                                {/* <img src="https://html.hixstudio.net/ebazer/assets/img/users/user-10.jpg" className="rounded-full shadow ring-4 ring-slate-50" id="profile-image" alt /> */}
                                                 <label className="absolute inset-0 cursor-pointer" htmlFor="pro-img" />
                                             </div>
                                             <div className="mt-4">

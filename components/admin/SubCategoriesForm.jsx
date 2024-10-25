@@ -1,16 +1,16 @@
 "use client";
 import { revalidate } from "@/hooks/fetchData";
 import usePost from "@/hooks/usePost";
-import { Button, Form, message, Upload } from "antd";
+import { Button, Form, message, Select, Upload } from "antd";
 import FormItem from "antd/es/form/FormItem";
 
-function CategoryForm() {
+function SubCategoriesForm({ categoriesSelect }) {
     const { postData, loading } = usePost();
 
     const onSuccess = () => {
-        message.success("Category created successfully");
+        message.success("Subcategory created successfully");
         form.resetFields();
-        revalidate("/admin/categories");
+        revalidate("/admin/sub-categories");
     };
 
     const onError = (err) => {
@@ -25,7 +25,7 @@ function CategoryForm() {
             const fileReader = new FileReader();
             fileReader.readAsDataURL(values.image.fileList[0].originFileObj);
             fileReader.onload = () => {
-                postData("/categories", { ...values, image: fileReader.result }, onSuccess, onError);
+                postData("/subcategories", { ...values, image: fileReader.result }, onSuccess, onError);
             };
         } catch (error) {
             console.log(error);
@@ -36,7 +36,7 @@ function CategoryForm() {
     return (
         <Form form={form} onFinish={handleSubmit}>
             <div className="bg-white mb-10 px-8 py-8 rounded-md">
-                <h2 className="text-lg font-medium text-gray-800 dark:text-white mb-10">Add category</h2>
+                <h2 className="text-lg font-medium text-gray-800 dark:text-white mb-10">Add sub category</h2>
                 <div className="mb-6">
                     <p className="mb-2 text-black">Upload Image</p>
                     <FormItem name="image" valuePropName="image" rules={[{ required: true, message: "Please upload category image" }]}>
@@ -52,6 +52,13 @@ function CategoryForm() {
                         <input className="input w-full outline-none h-[44px] rounded-md border border-gray6 px-6" type="text" placeholder="Name" />
                     </FormItem>
                 </div>
+                {/* input */}
+                <div className="mb-6">
+                    <p className="mb-2 text-black">Parent category</p>
+                    <FormItem name="parentCategoryId" rules={[{ required: true, message: "Please enter category name" }]}>
+                        <Select className="w-full" defaultValue="select" options={categoriesSelect} />
+                    </FormItem>
+                </div>
 
                 <button disabled={loading} type="submit" className="bg-violet-600 disabled:opacity-50 text-white rounded px-7 py-2">
                     Add Category
@@ -61,4 +68,4 @@ function CategoryForm() {
     );
 }
 
-export default CategoryForm;
+export default SubCategoriesForm;

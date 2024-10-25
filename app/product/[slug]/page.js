@@ -13,11 +13,11 @@ function ProductDetails() {
                     <Image.PreviewGroup>
                         <div className="grid grid-cols-[120px_auto] gap-5">
                             <div className="flex flex-col gap-3">
-                                <Image src="/man.jpg" />
-                                <Image src="/women.jpg" />
+                                <Image src="/man.jpg" alt="man" />
+                                <Image src="/women.jpg" alt="woman" />
                             </div>
                             <div>
-                                <Image src="/51.jpg" />
+                                <Image src="/51.jpg" alt="51" />
                             </div>
                         </div>
                     </Image.PreviewGroup>

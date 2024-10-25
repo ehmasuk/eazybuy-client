@@ -41,6 +41,14 @@ const items = [
         key: "/admin/tasks",
         label: <Link href="/admin/tasks">Tasks</Link>,
     },
+    {
+        key: "/admin/colors",
+        label: <Link href="/admin/colors">Colors</Link>,
+    },
+    {
+        key: "/admin/sizes",
+        label: <Link href="/admin/sizes">Sizes</Link>,
+    },
 ];
 
 function Layout({ children }) {

@@ -2,9 +2,7 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import "./globals.css";
 
 import AuthProvider from "@/components/AuthProvider";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import SideCart from "@/components/SideCart";
+import MainLayout from "@/components/MainLayout";
 import StoreProvider from "@/redux/StoreProvider";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
@@ -25,10 +23,7 @@ export default function RootLayout({ children }) {
                 <StoreProvider>
                     <AntdRegistry>
                         <body className={plus_jakarta_sans.className}>
-                            <Header />
-                            {children}
-                            <SideCart />
-                            <Footer />
+                            <MainLayout>{children}</MainLayout>
                         </body>
                     </AntdRegistry>
                 </StoreProvider>
