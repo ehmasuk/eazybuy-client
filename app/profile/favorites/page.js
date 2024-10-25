@@ -8,7 +8,7 @@ function FavoriteItems() {
                         <div className="flex items-center">
                             <img src="assets/images/shop/apple-smart-watch.jpg" className="rounded shadow dark:shadow-gray-800 w-16" alt />
                             <div className="ms-4">
-                                <a href className="font-semibold hover:text-orange-500">
+                                <a href="" className="font-semibold hover:text-orange-500">
                                     Apple Smart Watch
                                 </a>
                                 <p className="text-green-600 text-sm mt-1">
