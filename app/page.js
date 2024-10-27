@@ -2,11 +2,15 @@ import CategoryCards from "@/components/CategoryCards";
 import HeroSlider from "@/components/HeroSlider";
 import NewsLatter from "@/components/NewsLatter";
 import ProductCards from "@/components/ProductCards";
+import { fetchData } from "@/hooks/fetchData";
 import Link from "next/link";
 import { FaBars } from "react-icons/fa";
 import { PiDress } from "react-icons/pi";
 
-function HomePage() {
+async function HomePage() {
+
+    const allProducts = await fetchData("/products");
+
     return (
         <>
             <div className="container py-5">
@@ -76,7 +80,7 @@ function HomePage() {
                 <div className="mb-10">
                     <p className="text-3xl mb-4 font-semibold">New arivals</p>
                     <div className="grid grid-cols-5 gap-4">
-                        <ProductCards data={[1]} />
+                        <ProductCards data={allProducts} />
                     </div>
                 </div>
 

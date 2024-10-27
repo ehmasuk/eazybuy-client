@@ -21,7 +21,6 @@ async function Products() {
                             { label: "Category", value: ["category","name"] },
                             { label: "Quantity", value: ["quantity"] },
                             { label: "Shipping", value: ["shipping"] },
-                            { label: "description", value: ["description"] },
                         ]}
                         actions={true}
                     />

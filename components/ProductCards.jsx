@@ -12,28 +12,38 @@ function ProductCards({ data }) {
                 return (
                     <div key={index} className="group mb-10">
                         <div className="relative p-4 min-h-96 w-full overflow-hidden">
-                            <Link href={`/product/test`}>
-                                <Image src="/51.jpg" alt="image" fill sizes="(min-width: 1340px) 243px, calc(19.8vw - 18px)" className="absolute left-0 top-0 w-full h-full object-cover" />
+                            <Link href={`/product/${product.slug}`}>
+                                <Image
+                                    src={product.image}
+                                    alt="image"
+                                    fill
+                                    sizes="(min-width: 1340px) 243px, calc(19.8vw - 18px)"
+                                    className="absolute left-0 top-0 w-full h-full object-contain border border-blue-100"
+                                />
                             </Link>
                             {/* cart options */}
                             <div className="absolute -bottom-[60px] opacity-0 duration-300 group-hover:bottom-4 group-hover:opacity-100 left-1/2 -translate-x-1/2 min-w-[90%]">
                                 <div className="p-3 text-sm bg-white text-black flex flex-col items-center justify-center gap-3">
-                                    <p>Quick add to cart</p>
+                                    {product.sizes || product.colors ? <p>Quick add to cart</p> : null}
+
                                     {/* sizes */}
                                     <div className="flex items-center justify-center gap-2">
-                                        <div className="size-8 font-semibold border cursor-pointer border-slate-200 hover-effect uppercase flex items-center justify-center">xs</div>
-                                        <div className="size-8 font-semibold border cursor-pointer border-slate-200 hover-effect uppercase flex items-center justify-center">s</div>
-                                        <div className="size-8 font-semibold border cursor-pointer border-slate-200 hover-effect uppercase flex items-center justify-center">m</div>
-                                        <div className="size-8 font-semibold border cursor-pointer border-slate-200 hover-effect uppercase flex items-center justify-center">l</div>
+                                        {product?.sizes?.map((size, index) => {
+                                            return (
+                                                <div key={index} className="size-8 font-semibold border cursor-pointer border-slate-200 hover-effect uppercase flex items-center justify-center">
+                                                    {size.name}
+                                                </div>
+                                            );
+                                        })}
                                     </div>
                                     {/* colors */}
                                     <div className="flex items-center justify-center gap-2">
-                                        <div className="size-5 hover:ring-2 border-2 border-white rounded-full cursor-pointer bg-red-500"></div>
-                                        <div className="size-5 hover:ring-2 border-2 border-white rounded-full cursor-pointer bg-blue-500"></div>
-                                        <div className="size-5 hover:ring-2 border-2 border-white rounded-full cursor-pointer bg-pink-500"></div>
-                                        <div className="size-5 hover:ring-2 border-2 border-white rounded-full cursor-pointer bg-violet-500"></div>
+                                        {product?.colors?.map((color, index) => {
+                                            return <div key={index} className="size-5 hover:ring-2 border-2 border-white rounded-full cursor-pointer" style={{ backgroundColor: color.code }}></div>;
+                                        })}
                                     </div>
                                 </div>
+
                                 <button className="flex items-center text-sm gap-2 w-full bg-black px-4 py-2 text-white hover-effect justify-center">
                                     <IoCartOutline fontSize={18} />
                                     Add to cart
@@ -60,8 +70,8 @@ function ProductCards({ data }) {
                                 </div>
                             </div>
                         </div>
-                        <Link href={`/product/test`}>
-                            <p className="font-semibold mt-3">Polo t-shirt</p>
+                        <Link href={`/product/${product.slug}`}>
+                            <p className="font-semibold mt-3 line-clamp-2">{product.title}</p>
                         </Link>
                         <div className="flex items-center gap-1">
                             <p>4.5</p>
@@ -69,8 +79,11 @@ function ProductCards({ data }) {
                             <p>45 reviews</p>
                         </div>
                         <div className="flex items-center gap-4 mt-1">
-                            <p className="text-blue-600 font-semibold text-lg">$94</p>
-                            <del className="text-gray-600 text-sm font-semibold">$100</del>
+                            <p className="text-blue-600 font-semibold text-lg">${product.newPrice}</p>
+                            <del className="text-gray-600 text-sm font-semibold">
+                                {product?.oldPrice && "$"}
+                                {product?.oldPrice}
+                            </del>
                         </div>
                     </div>
                 );
