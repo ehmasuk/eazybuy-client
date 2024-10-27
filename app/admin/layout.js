@@ -3,6 +3,7 @@
 import { Menu } from "antd";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { RiHomeSmileLine } from "react-icons/ri";
 
 const items = [
     {
@@ -25,7 +26,7 @@ const items = [
     },
     {
         key: "e",
-        label: 'Categories', 
+        label: "Categories",
         children: [
             {
                 key: "/admin/categories",
@@ -56,7 +57,7 @@ const items = [
     {
         key: "/admin/reviews",
         label: <Link href="/admin/reviews">Reviews</Link>,
-    }
+    },
 ];
 
 function Layout({ children }) {
@@ -76,6 +77,13 @@ function Layout({ children }) {
                     items={items}
                 />
                 <div className="w-full">
+                    <div className="py-3 px-6 shaodw">
+                        <div className="flex gap-2">
+                            <Link href="/" className="flex gap-1 items-center hover:text-blue-600">
+                                <RiHomeSmileLine fontSize={20} /> Home
+                            </Link>
+                        </div>
+                    </div>
                     <div className="p-10 bg-slate-100 h-full">{children}</div>
                 </div>
             </div>
