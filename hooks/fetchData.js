@@ -9,7 +9,10 @@ export const revalidate = (url) => {
 export const fetchData = async (url) => {
     if (!process.env.NEXT_PUBLIC_API_URL) return [];
     const res = await fetch(process.env.NEXT_PUBLIC_API_URL + url, {
-        cache: "no-store",
+        // cache: "no-store",
+        next: {
+            revalidate: 10 * 60,
+        },
     });
     if (!res.ok) {
         throw new Error("Error fetching from " + url);
