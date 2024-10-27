@@ -2,11 +2,9 @@
 
 import { logoutAction } from "@/actions/authActions";
 import { message } from "antd";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 
-function ProfileDropdown({session}) {
-
+function ProfileDropdown({ session }) {
     const handleLogout = async () => {
         await logoutAction();
         window.location.reload();
@@ -25,15 +23,13 @@ function ProfileDropdown({session}) {
                 </div>
             </div>
             <ul>
-                {
-                    session?.user?.isAdmin && (
-                        <li>
-                            <a href="/admin" className="px-5 py-2 w-full block hover:bg-gray-100 rounded-md hover:text-slate-800 text-base">
-                                Admin Panel
-                            </a>
-                        </li>
-                    )
-                }
+                {session?.user?.isAdmin && (
+                    <li>
+                        <a href="/admin" className="px-5 py-2 w-full block hover:bg-gray-100 rounded-md hover:text-slate-800 text-base">
+                            Admin Panel
+                        </a>
+                    </li>
+                )}
                 <li>
                     <a href="#" className="px-5 py-2 w-full block hover:bg-gray-100 rounded-md hover:text-slate-800 text-base">
                         Dashboard

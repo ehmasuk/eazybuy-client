@@ -8,11 +8,11 @@ export const revalidate = (url) => {
 
 export const fetchData = async (url) => {
     if (!process.env.NEXT_PUBLIC_API_URL) return [];
-    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + url, { next: { revalidate: 30 * 60 * 1000 } });
+    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + url, {
+        cache: "no-store",
+    });
     if (!res.ok) {
         throw new Error("Error fetching from " + url);
     }
     return await res.json();
 };
-
-

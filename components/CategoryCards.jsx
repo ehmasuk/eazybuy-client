@@ -4,6 +4,7 @@ import Link from "next/link";
 
 async function CategoryCards() {
     const data = await fetchData("/categories");
+
     return (
         <>
             {data?.map((category, index) => {
