@@ -17,7 +17,7 @@ function ProductHeroSection({ product }) {
                             })}
                         </div>
                         <div>
-                            <Image sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" fill className="border border-blue-100" src={product?.image} alt="image" />
+                            <Image sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" fill className="border p-3 border-blue-100" src={product?.image} alt="image" />
                         </div>
                     </div>
                 </Image.PreviewGroup>

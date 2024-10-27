@@ -1,12 +1,10 @@
 import ProductHeroSection from "@/components/ProductHeroSection";
 import { fetchData } from "@/hooks/fetchData";
-
-async function ProductDetails({params}) {
-
-
+import { redirect } from "next/navigation";
+async function ProductDetails({ params }) {
     const product = await fetchData(`/singleproduct?slug=${params.slug}`);
 
-
+    if (!product) redirect("/404");
 
     return (
         <div className="max-w-7xl px-4 py-10 mx-auto">

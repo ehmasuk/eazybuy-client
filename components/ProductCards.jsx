@@ -6,6 +6,9 @@ import { GoEye } from "react-icons/go";
 import { IoCartOutline } from "react-icons/io5";
 
 function ProductCards({ data }) {
+
+
+
     return (
         <>
             {data?.map((product, index) => {
@@ -18,7 +21,7 @@ function ProductCards({ data }) {
                                     alt="image"
                                     fill
                                     sizes="(min-width: 1340px) 243px, calc(19.8vw - 18px)"
-                                    className="absolute left-0 top-0 w-full h-full object-contain border border-blue-100"
+                                    className="absolute left-0 top-0 w-full h-full p-3 object-contain border border-blue-100"
                                 />
                             </Link>
                             {/* cart options */}
@@ -39,7 +42,7 @@ function ProductCards({ data }) {
                                     {/* colors */}
                                     <div className="flex items-center justify-center gap-2">
                                         {product?.colors?.map((color, index) => {
-                                            return <div key={index} className="size-5 hover:ring-2 border-2 border-white rounded-full cursor-pointer" style={{ backgroundColor: color.code }}></div>;
+                                            return <div key={index} className="size-5 hover:ring-2 border border-black rounded-full cursor-pointer" style={{ backgroundColor: color.code }}></div>;
                                         })}
                                     </div>
                                 </div>
@@ -73,10 +76,10 @@ function ProductCards({ data }) {
                         <Link href={`/product/${product.slug}`}>
                             <p className="font-semibold mt-3 line-clamp-2">{product.title}</p>
                         </Link>
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-1 mt-1">
                             <p>4.5</p>
-                            <Rate disabled defaultValue={4} className="[&_*]:text-sm" />
-                            <p>45 reviews</p>
+                            <Rate disabled defaultValue={4} className="[&_*]:text-sm !-mt-1" />
+                            <p className="text-gray-500 text-xs">45 reviews</p>
                         </div>
                         <div className="flex items-center gap-4 mt-1">
                             <p className="text-blue-600 font-semibold text-lg">${product.newPrice}</p>
