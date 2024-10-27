@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { opneSideCart } from "@/redux/CartSlice";
 import { Badge } from "antd";
@@ -8,14 +8,23 @@ import { AiOutlineUser } from "react-icons/ai";
 import { GoHeart } from "react-icons/go";
 import { IoSearchSharp } from "react-icons/io5";
 import { RiShoppingCartLine } from "react-icons/ri";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import HeaderTop from "./HeaderTop";
 import LoginPopup from "./LoginPopup";
 import Logo from "./Logo";
 import ProfileDropdown from "./ProfileDropdown";
+import { useEffect, useState } from "react";
 
 function Header() {
     const dispatch = useDispatch();
+
+    const {cartItems} = useSelector((reducers) => reducers.CartSlice);
+
+    const [isReady,setIsReady] = useState(false);
+
+    useEffect(()=>{
+        setIsReady(true)
+    },[])
 
     const { data: session } = useSession();
 
@@ -74,7 +83,7 @@ function Header() {
                                 </Badge>
                             </Link>
                             <button className="flex items-center" onClick={() => dispatch(opneSideCart())}>
-                                <Badge count={1} color="blue">
+                                <Badge count={isReady && cartItems?.length} color="blue">
                                     <RiShoppingCartLine className="hover:text-blue-600" fontSize={23} />
                                 </Badge>
                             </button>

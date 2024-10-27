@@ -19,6 +19,9 @@ function HeaderTop() {
                     </a>
                 </div>
                 <div className="flex items-center gap-8">
+                    <Link href="/shop" className="text-sm hover:text-blue-600">
+                        Shop
+                    </Link>
                     <Link href="/about" className="text-sm hover:text-blue-600">
                         About
                     </Link>

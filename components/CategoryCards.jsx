@@ -14,7 +14,7 @@ async function CategoryCards() {
                             <Link href="/">
                                 <div className="flex items-center justify-center bg-[#F4F4F4] rounded-full size-36">
                                     <div className="size-20 relative">
-                                        <Image fill sizes="144px" src={category.image} alt="image" className=" rounded object-contain group-hover:scale-110 duration-300" />
+                                        <Image fill sizes="80px" src={category.image} alt="image" className=" rounded object-contain group-hover:scale-110 duration-300" />
                                     </div>
                                 </div>
                             </Link>

@@ -21,7 +21,7 @@ function useGet() {
         }
     };
 
-    return { data, loading, error,getData };
+    return { data, loading, error, getData };
 }
 
 export default useGet;

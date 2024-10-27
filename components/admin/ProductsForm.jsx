@@ -66,7 +66,7 @@ function ProductsForm({ allCategories, allColors, allSizes, allSubCategories }) 
                         <div>
                             <p className="mb-2 text-black">New Price</p>
                             <FormItem name="newPrice" rules={[{ required: true, message: "Please enter new price" }]}>
-                                <InputNumber size="large" min={1} max={10000} />
+                                <InputNumber size="large" min={1} />
                             </FormItem>
                         </div>
                         {/* Old price */}
@@ -75,7 +75,7 @@ function ProductsForm({ allCategories, allColors, allSizes, allSubCategories }) 
                                 Old price <span className="text-gray-500 text-sm">(optional)</span>
                             </p>
                             <FormItem name="oldPrice">
-                                <InputNumber size="large" min={1} max={10000} />
+                                <InputNumber size="large" min={1} />
                             </FormItem>
                         </div>
                     </div>

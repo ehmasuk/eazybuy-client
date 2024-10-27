@@ -12,7 +12,7 @@ const checkCart = () => {
 
 const calcTotalAmount = (cart) => {
     const total = cart.reduce((acc, item) => {
-        acc = +item.price + acc;
+        acc = +item.newPrice + acc;
         return acc;
     }, 0);
     return total.toFixed(2);
@@ -36,7 +36,7 @@ const CartSlice = createSlice({
     },
     reducers: {
         addToCart: (state, action) => {
-            const isExits = state.cartItems.some((item) => item._id === action.payload._id);
+            const isExits = state.cartItems.some((item) => item.id === action.payload.id);
             if (!isExits) {
                 state.cartItems.push(action.payload);
             }
@@ -44,7 +44,7 @@ const CartSlice = createSlice({
             setCookie("cartItems", state.cartItems);
         },
         removeFromCart: (state, action) => {
-            state.cartItems = state.cartItems.filter((item) => item._id != action.payload);
+            state.cartItems = state.cartItems.filter((item) => item.id != action.payload);
             state.totalPrice = calcTotalAmount(state.cartItems);
             setCookie("cartItems", state.cartItems);
         },

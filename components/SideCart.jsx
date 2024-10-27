@@ -1,6 +1,6 @@
 "use client";
 
-import { closeSideCart } from "@/redux/CartSlice";
+import { closeSideCart, removeFromCart } from "@/redux/CartSlice";
 import { Drawer } from "antd";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,18 +13,20 @@ function SideCart() {
     const { cartItems, isSideCartOpen, totalPrice } = useSelector((reducers) => reducers.CartSlice);
 
     return (
-        <Drawer title="Basic Drawer" onClose={() => dispatch(closeSideCart())} size="large" open={isSideCartOpen}>
+        <Drawer title="Basic Drawer" onClose={() => dispatch(closeSideCart())} open={isSideCartOpen}>
             {cartItems?.map((cartItem) => {
                 return (
-                    <div key={cartItem._id} className="rounded border border-gray-100 mb-4 shadow p-2 grid grid-cols-3 gap-4 ">
+                    <div key={cartItem.id} className="rounded border border-gray-100 mb-4 shadow p-2 grid grid-cols-3 gap-4 ">
                         <div className="col-span-1">
-                            <Image height={300} width={300} src={cartItem.image} alt="image" className="max-lg:w-full rounded object-cover" />
+                            <div className="relative w-full h-full">
+                                <Image fill sizes="(min-width: 1340px) 100px, calc(19.9vw - 45px)" src={cartItem.image} alt="image" className="max-lg:w-full rounded object-contain" />
+                            </div>
                         </div>
                         <div className="col-span-2 detail w-full">
-                            <h5 className="font-manrope font-bold text-sm text-gray-900 line-clamp-2">{cartItem.title}</h5>
+                            <h5 className="font-manrope font-semibold text-sm text-gray-900 line-clamp-2">{cartItem.title}</h5>
                             <div className="flex justify-between items-center">
-                                <h6 className="text-indigo-600 font-manrope font-bold leading-9 text-right">${cartItem.price}</h6>
-                                <LuTrash2 size={16} color="red" role="button" onClick={() => dispatch(removeFromCart(cartItem._id))} />
+                                <h6 className="text-indigo-600 font-manrope font-semibold leading-9 text-right">${cartItem.newPrice}</h6>
+                                <LuTrash2 size={16} color="red" role="button" onClick={() => dispatch(removeFromCart(cartItem.id))} />
                             </div>
                         </div>
                     </div>
@@ -35,7 +37,7 @@ function SideCart() {
                     <div className="flex flex-col mt-3 md:flex-row items-center md:items-center justify-between lg:px-6 pb-6 border-b border-gray-200 max-lg:max-w-lg max-lg:mx-auto">
                         <h5 className="text-gray-900 text-lg font-manrope font-semibold w-full max-md:text-center max-md:mb-4">Subtotal</h5>
                         <div className="flex items-center justify-between gap-5 ">
-                            <h6 className="font-manrope text-lg font-bold lead-10 text-indigo-600">${totalPrice}</h6>
+                            <h6 className="font-manrope text-lg font-semibold lead-10 text-indigo-600">${totalPrice}</h6>
                         </div>
                     </div>
                     <div className="grid mt-3 grid-cols-2 gap-4 items-center">

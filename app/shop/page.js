@@ -1,8 +1,23 @@
+"use client";
+
 import NewsLatter from "@/components/NewsLatter";
 import ProductCards from "@/components/ProductCards";
+import useGet from "@/hooks/useGet";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 function ShopPage() {
+    const { getData, data, loading, error } = useGet();
+
+    const [allProducts, setAllProducts] = useState(null);
+
+    useEffect(() => {
+        getData("/products");
+    }, []);
+    useEffect(() => {
+        data && setAllProducts(data);
+    }, [data]);
+
     return (
         <>
             <div className="max-w-7xl mx-auto px-4 py-10">
@@ -45,8 +60,9 @@ function ShopPage() {
                 </div>
 
                 <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-4">
-                    <ProductCards data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} />
+                    <ProductCards data={allProducts} />
                 </div>
+                {loading && <div className="w-full min-h-screen bg-gray-200 animate-pulse"></div>}
             </div>
             <NewsLatter />
         </>

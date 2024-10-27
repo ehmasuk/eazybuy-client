@@ -3,11 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { CiHeart } from "react-icons/ci";
 import { GoEye } from "react-icons/go";
-import { IoCartOutline } from "react-icons/io5";
+import QuickAddProduct from "./QuickAddProduct";
 
 function ProductCards({ data }) {
-
-
+    const calCulateDiscount = (oldPrice, newPrice) => {
+        const discount = ((oldPrice - newPrice) / oldPrice) * 100;
+        return Math.round(discount);
+    };
 
     return (
         <>
@@ -20,55 +22,33 @@ function ProductCards({ data }) {
                                     src={product.image}
                                     alt="image"
                                     fill
-                                    sizes="(min-width: 1340px) 243px, calc(19.8vw - 18px)"
+                                    sizes="(min-width: 1340px) 218px, calc(19.9vw - 45px)"
                                     className="absolute left-0 top-0 w-full h-full p-3 object-contain border border-blue-100"
                                 />
                             </Link>
+
                             {/* cart options */}
-                            <div className="absolute -bottom-[60px] opacity-0 duration-300 group-hover:bottom-4 group-hover:opacity-100 left-1/2 -translate-x-1/2 min-w-[90%]">
-                                <div className="p-3 text-sm bg-white text-black flex flex-col items-center justify-center gap-3">
-                                    {product.sizes || product.colors ? <p>Quick add to cart</p> : null}
-
-                                    {/* sizes */}
-                                    <div className="flex items-center justify-center gap-2">
-                                        {product?.sizes?.map((size, index) => {
-                                            return (
-                                                <div key={index} className="size-8 font-semibold border cursor-pointer border-slate-200 hover-effect uppercase flex items-center justify-center">
-                                                    {size.name}
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                    {/* colors */}
-                                    <div className="flex items-center justify-center gap-2">
-                                        {product?.colors?.map((color, index) => {
-                                            return <div key={index} className="size-5 hover:ring-2 border border-black rounded-full cursor-pointer" style={{ backgroundColor: color.code }}></div>;
-                                        })}
-                                    </div>
-                                </div>
-
-                                <button className="flex items-center text-sm gap-2 w-full bg-black px-4 py-2 text-white hover-effect justify-center">
-                                    <IoCartOutline fontSize={18} />
-                                    Add to cart
-                                </button>
-                            </div>
+                            <QuickAddProduct product={product} />
 
                             {/* discount */}
-                            <p className="absolute top-2 left-2 text-xs text-white bg-blue-600 px-3 py-1">- 30%</p>
+                            {calCulateDiscount(product?.oldPrice, product?.newPrice) > 0 && (
+                                <p className="absolute top-2 left-2 text-xs text-white bg-blue-600 px-3 py-1">-{calCulateDiscount(product?.oldPrice, product?.newPrice)}%</p>
+                            )}
+
                             {/* options */}
                             <div className="absolute  -right-[60px] opacity-0 duration-300 group-hover:right-4 group-hover:opacity-100">
                                 <div className="flex flex-col items-center gap-2 text-white">
                                     <Tooltip placement="left" title="Add to wishlist">
-                                        <button className="size-10 bg-white text-black flex items-center justify-center hover-effect">
+                                        <button className="size-10 bg-black text-white flex items-center justify-center hover-effect">
                                             <CiHeart fontSize={20} />
                                         </button>
                                     </Tooltip>
                                     <Tooltip placement="left" title="View product">
-                                        <button className="size-10 bg-white text-black flex items-center justify-center hover-effect">
-                                            <Link href="/">
+                                        <Link href={`/product/${product.slug}`}>
+                                            <button className="size-10 bg-black text-white flex items-center justify-center hover-effect">
                                                 <GoEye fontSize={20} />
-                                            </Link>
-                                        </button>
+                                            </button>
+                                        </Link>
                                     </Tooltip>
                                 </div>
                             </div>
